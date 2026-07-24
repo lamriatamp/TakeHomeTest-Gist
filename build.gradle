@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Web Driver
+    implementation("io.github.bonigarcia:webdrivermanager:6.3.2")
+
+    // Selenium
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.23.0'
+
+    // TestNG
+    testImplementation 'org.testng:testng:7.10.2'
+
+    // Logging (opsional)
+    implementation 'org.apache.logging.log4j:log4j-core:2.23.1'
+    implementation 'org.apache.logging.log4j:log4j-api:2.23.1'
+
+    // ExtentReports (opsional untuk report cantik)
+    testImplementation 'com.aventstack:extentreports:5.1.1'
+
+    // API
+    testImplementation 'io.rest-assured:rest-assured:5.4.0'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+}
+
+test {
+    useTestNG() {
+        suites 'src/test/resources/testng.xml'
+    }
+}
