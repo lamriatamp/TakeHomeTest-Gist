@@ -16,17 +16,17 @@ public class ConfigReader {
                 properties.load(fis);
             }
         } catch (IOException e) {
-            // di CI file memang tidak ada, jadi abaikan
+
         }
     }
 
     public static String get(String key) {
-        // cek dulu di environment variable (untuk CI/CD)
+
         String envValue = System.getenv(key);
         if (envValue != null && !envValue.trim().isEmpty()) {
             return envValue;
         }
-        // kalau tidak ada, ambil dari config.properties (untuk lokal dev)
+
         return properties.getProperty(key);
     }
 }

@@ -18,16 +18,13 @@ public class GistPage {
     public void createGist(String filename, String content) {
         driver.get("https://gist.github.com/");
 
-        // isi nama file
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("gist[contents][][name]")))
                 .sendKeys(filename);
 
-        // klik editor CodeMirror lalu ketik konten
         By editorLocator = By.xpath("//div[contains(@class,'CodeMirror')]");
         wait.until(ExpectedConditions.elementToBeClickable(editorLocator)).click();
         driver.switchTo().activeElement().sendKeys(content);
 
-        // klik tombol create gist
         By createButton = By.xpath("//button[normalize-space()='Create secret gist']");
         wait.until(ExpectedConditions.elementToBeClickable(createButton)).click();
     }
@@ -59,18 +56,17 @@ public class GistPage {
         By deleteButton = By.xpath("//button[@class='Button--danger Button--small Button']");
         wait.until(ExpectedConditions.elementToBeClickable(deleteButton)).click();
 
-        // tunggu confirm dialog lalu klik OK
+
         WebDriverWait alertWait = new WebDriverWait(driver, Duration.ofSeconds(15));
         alertWait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
 
-        // precaution: beri jeda agar server sempat memproses delete
+
         try { Thread.sleep(3000); } catch (InterruptedException e) { e.printStackTrace(); }
 
-        // kembali ke halaman gist list user
         driver.get("https://gist.github.com/" + username);
 
-        // tunggu halaman list ter-load
+
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("body")));
     }
 }

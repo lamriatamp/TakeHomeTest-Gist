@@ -15,14 +15,12 @@ public class GistListPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    // cek apakah ada gist apapun
     public boolean hasGists(String username) {
         driver.get("https://gist.github.com/" + username);
         By gistLocator = By.cssSelector("strong.css-truncate-target");
         return !wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(gistLocator)).isEmpty();
     }
 
-    // cek apakah gist dengan nama file tertentu muncul
     public boolean gistExists(String username, String filename) {
         driver.get("https://gist.github.com/" + username);
         By gistLocator = By.xpath("//strong[@class='css-truncate-target' and text()='" + filename + "']");

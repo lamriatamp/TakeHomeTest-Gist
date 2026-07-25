@@ -18,7 +18,7 @@ public class EditGistTest extends BaseTest {
 
         // Edit gist langsung dari list
         GistPage gistPage = new GistPage(driver);
-        gistPage.editLatestGist("TestGist.java", "System.out.println(\"Edited\");", ConfigReader.get("GITHUB_USERNAME"));
+        gistPage.editLatestGist("QA.java", "System.out.println(\"Edited\");", ConfigReader.get("GITHUB_USERNAME"));
         System.out.println("Step: Gist berhasil diedit");
 
         // Assertion

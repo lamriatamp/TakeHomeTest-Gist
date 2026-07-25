@@ -17,6 +17,6 @@ public class PutUserTest extends BaseApiTest {
                 .put("/api/users/2")
                 .then()
                 .statusCode(200)
-                .body("job", equalTo("Senior QA"));
+                .body("job", equalTo("QA Tester"));
     }
 }

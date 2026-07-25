@@ -7,7 +7,7 @@ import static org.hamcrest.Matchers.*;
 public class PostUserTest extends BaseApiTest {
     @Test
     public void createUser() {
-        String requestBody = "{ \"name\": \"Leonardo\", \"job\": \"QA Engineer\" }";
+        String requestBody = "{ \"name\": \"Lamria\", \"job\": \"QA Tester\" }";
 
         given()
                 .header("x-api-key", apiKey)
@@ -17,7 +17,7 @@ public class PostUserTest extends BaseApiTest {
                 .post("/api/users")
                 .then()
                 .statusCode(201)
-                .body("name", equalTo("Leonardo"))
-                .body("job", equalTo("QA Engineer"));
+                .body("name", equalTo("Lamria M Tampubolon"))
+                .body("job", equalTo("QA Tester"));
     }
 }

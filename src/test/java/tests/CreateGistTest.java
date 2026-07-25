@@ -11,18 +11,17 @@ public class CreateGistTest extends BaseTest {
 
     @Test
     public void createPublicGist() {
-        // Login
+
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login(ConfigReader.get("GITHUB_USERNAME"), ConfigReader.get("GITHUB_PASSWORD"));
-        System.out.println("Step: Login berhasil");
+        System.out.println("Step: Login berhasil dilakukan");
 
-        // Create Gist
         GistPage gistPage = new GistPage(driver);
-        gistPage.createGist("TestGist.java", "System.out.println(\"Hello World\");");
+        gistPage.createGist("QA.java", "System.out.println(\"Halo\");");
         System.out.println("Step: Gist berhasil dibuat");
 
         // Assertion
-        Assert.assertTrue(driver.getPageSource().contains("TestGist.java"),
+        Assert.assertTrue(driver.getPageSource().contains("QA.java"),
                 "Gist tidak ditemukan di halaman setelah create");
     }
 }

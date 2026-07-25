@@ -19,10 +19,10 @@ public class ViewGistTest extends BaseTest {
         // View gist list
         GistListPage gistListPage = new GistListPage(driver);
         String username = ConfigReader.get("GITHUB_USERNAME");
-        boolean gistFound = gistListPage.gistExists(username, "TestGist.java");
+        boolean gistFound = gistListPage.gistExists(username, "QA.java");
         System.out.println("Step: Halaman gist user terbuka");
 
         // Assertion
-        Assert.assertTrue(gistFound, "Gist 'TestGist.java' tidak ditemukan di halaman user");
+        Assert.assertTrue(gistFound, "Gist 'QA.java' tidak ditemukan di halaman user");
     }
 }

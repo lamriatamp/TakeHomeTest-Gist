@@ -18,19 +18,19 @@ public class DeleteGistTest extends BaseTest {
         System.out.println("Step: Login berhasil");
 
         GistPage gistPage = new GistPage(driver);
-        gistPage.deleteLatestGist("TestGist.java", ConfigReader.get("GITHUB_USERNAME"));
+        gistPage.deleteLatestGist("QA.java", ConfigReader.get("GITHUB_USERNAME"));
         System.out.println("Step: Gist berhasil dihapus");
 
-        // Assertion: gist sudah tidak ada di list
+
         By gistLocator = By.xpath("//strong[@class='css-truncate-target' and text()='TestGist.java']");
 
-        // reload sekali lagi kalau masih muncul
+
         if (!driver.findElements(gistLocator).isEmpty()) {
             driver.navigate().refresh();
             wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("body")));
         }
 
         Assert.assertTrue(driver.findElements(gistLocator).isEmpty(),
-                "Gist 'TestGist.java' masih ada, delete gagal");
+                "Gist 'QA.java' masih ada, delete gagal");
     }
 }
